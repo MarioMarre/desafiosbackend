@@ -29,10 +29,10 @@ Debe tener un método getProductById, el cual debe recibir un id, y tras leer el
  const fs = require ("fs");
 
  class ProductManager {
-   constructor(filename) {
-     this.filename = filename;
+   constructor(path) {
+     this.path = path;
      try {
-       const data = readFileSync(this.filename, "utf8");
+       const data = readFileSync(this.path, "utf8");
        this.products = JSON.parse(data);
      } catch (error) {
        this.products = [];
@@ -41,7 +41,7 @@ Debe tener un método getProductById, el cual debe recibir un id, y tras leer el
  
    saveProducts() {
      const data = JSON.stringify(this.products);
-     fs.writeFileSync(this.filename, data, "utf8");
+     fs.writeFileSync(this.path, data, "utf8");
    }
  
    getProducts() {
